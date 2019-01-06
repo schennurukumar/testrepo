@@ -1,11 +1,11 @@
-FROM maven:3.5-jdk-8-alpine as BUILD
+//FROM maven:3.5-jdk-8-alpine as BUILD
 
-COPY . /usr/src/app
-RUN mvn -f /usr/src/app/pom.xml clean package
+//COPY . /usr/src/app
+//RUN mvn -f /usr/src/app/pom.xml clean package
 
 FROM openjdk:8-jdk-alpine
-ENV PORT 8282
+//ENV PORT 8282
 EXPOSE 8282
 COPY --from=BUILD /usr/src/app/target/*.jar /opt/app.jar
-WORKDIR /opt
+//WORKDIR /opt
 CMD ["java", "-jar", "app.jar"]
